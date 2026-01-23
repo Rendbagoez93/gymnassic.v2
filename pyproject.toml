@@ -1,0 +1,44 @@
+[project]
+name = "gymnassic-v2"
+version = "0.1.0"
+description = "Gym Membership Management System - SignUp Gateway for gym subscriptions"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "flask>=3.1.2",
+    "python-dotenv>=1.0.0",
+]
+
+[dependency-groups]
+auth = [
+    "flask-limiter>=4.1.1",
+    "flask-login>=0.6.3",
+    "flask-talisman>=1.1.0",
+    "flask-wtf>=1.2.2",
+    "passlib>=1.7.4",
+    "werkzeug>=3.1.5",
+]
+database = [
+    "flask-migrate>=4.1.0",
+    "flask-sqlalchemy>=3.1.1",
+    "psycopg2-binary>=2.9.11",
+]
+email = [
+    "flask-mail>=0.10.0",
+]
+quality = [
+    "black>=26.1.0",
+    "mypy>=1.19.1",
+    "pre-commit>=4.5.1",
+    "ruff>=0.14.14",
+]
+testing = [
+    "factory-boy>=3.3.3",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "pytest-flask>=1.3.0",
+]
+validation = [
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.12.0",
+]
