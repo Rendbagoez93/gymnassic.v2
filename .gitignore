@@ -1,27 +1,35 @@
 # Python-generated files
 __pycache__/
 *.py[oc]
+*.pyo
+*.pyd
 build/
 dist/
 wheels/
 *.egg-info
+*.egg
 
 # Virtual environments
-.venv
+.venv/
+venv/
+ENV/
+env/
 
 # Environment files (IMPORTANT: Never commit these!)
 .env
 .env.local
 .env.development.local
 .env.production.local
-*.env
 !.env.example
+!.env.development
+!.env.production
 
 # Database
 instance/
 *.db
 *.sqlite
 *.sqlite3
+*.db-journal
 
 # Logs
 logs/
@@ -37,18 +45,47 @@ uploads/
 *.swp
 *.swo
 *~
+.vs/
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
 .tox/
+*.cover
+.hypothesis/
 
 # Flask
 instance/
 .webassets-cache
+.flask_session/
+
+# Migrations (keep structure, ignore version files if needed)
+# migrations/versions/*.py
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~.nib
+local_settings.py
+
+# Python package management
+uv.lock
+poetry.lock
+Pipfile.lock
+
+# Test files
+test_*.py
+*_test.py
+
+# Documentation builds
+docs/_build/
+docs/.doctrees/
+site/
 
