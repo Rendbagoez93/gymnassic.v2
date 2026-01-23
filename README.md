@@ -45,8 +45,6 @@ gymnassic.v2/
 ├── templates/            # HTML templates
 ├── migrations/           # Database migrations
 ├── tests/                # Unit tests
-├── .env.development      # Development environment
-├── .env.production       # Production environment
 ├── run.py               # Application entry point
 └── pyproject.toml       # Dependencies
 ```
