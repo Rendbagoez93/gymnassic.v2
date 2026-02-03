@@ -7,14 +7,15 @@ Centralized configuration management for Gymnassic application.
 from .config import (
     BaseConfig,
     DevelopmentConfig,
+    Environment,
     ProductionConfig,
     TestingConfig,
-    get_config,
     config,
+    get_config,
 )
-from .envcommon import Environment, load_environment, get_env, get_bool_env, get_int_env
-from .security import SecurityConfig, DevelopmentSecurityConfig, ProductionSecurityConfig
-from .databases import DatabaseConfig, SQLiteDatabaseConfig, PostgresDatabaseConfig
+from .containers import ApplicationContainer
+from .envcommon import BASE_DIR, get_current_environment, is_development, is_production
+from .gymconf import GymConfig
 
 __all__ = [
     # Configuration classes
@@ -22,19 +23,16 @@ __all__ = [
     "DevelopmentConfig",
     "ProductionConfig",
     "TestingConfig",
+    "Environment",
     "get_config",
     "config",
+    # Dependency injection
+    "ApplicationContainer",
     # Environment utilities
-    "Environment",
-    "load_environment",
-    "get_env",
-    "get_bool_env",
-    "get_int_env",
-    # Specific configs
-    "SecurityConfig",
-    "DevelopmentSecurityConfig",
-    "ProductionSecurityConfig",
-    "DatabaseConfig",
-    "SQLiteDatabaseConfig",
-    "PostgresDatabaseConfig",
+    "BASE_DIR",
+    "get_current_environment",
+    "is_development",
+    "is_production",
+    # Gym configuration
+    "GymConfig",
 ]

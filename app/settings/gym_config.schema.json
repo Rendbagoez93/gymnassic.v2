@@ -1,0 +1,270 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Gym Profile Configuration",
+  "description": "Schema for gym business profile and operational settings",
+  "type": "object",
+  "required": ["gym_name", "contact"],
+  "properties": {
+    "gym_name": {
+      "type": "string",
+      "description": "Official name of the gym",
+      "minLength": 1,
+      "maxLength": 100,
+      "examples": ["Gymnassic Fitness Center", "PowerFit Gym"]
+    },
+    "business_name": {
+      "type": "string",
+      "description": "Legal business name (if different from gym name)",
+      "maxLength": 150
+    },
+    "tagline": {
+      "type": "string",
+      "description": "Gym tagline or slogan",
+      "maxLength": 200,
+      "examples": ["Your Fitness Journey Starts Here"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed gym description",
+      "maxLength": 1000
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "URL or path to gym logo",
+      "format": "uri-reference"
+    },
+    "contact": {
+      "type": "object",
+      "required": ["email"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Primary contact email"
+        },
+        "phone": {
+          "type": "string",
+          "pattern": "^[+]?[(]?[0-9]{1,4}[)]?[-\\s\\.]?[(]?[0-9]{1,4}[)]?[-\\s\\.]?[0-9]{1,9}$",
+          "description": "Contact phone number"
+        },
+        "phone_secondary": {
+          "type": "string",
+          "pattern": "^[+]?[(]?[0-9]{1,4}[)]?[-\\s\\.]?[(]?[0-9]{1,4}[)]?[-\\s\\.]?[0-9]{1,9}$",
+          "description": "Secondary phone number"
+        },
+        "fax": {
+          "type": "string",
+          "description": "Fax number"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri",
+          "description": "Gym website URL"
+        }
+      }
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "string",
+          "description": "Street address",
+          "maxLength": 200
+        },
+        "street2": {
+          "type": "string",
+          "description": "Additional address line",
+          "maxLength": 200
+        },
+        "city": {
+          "type": "string",
+          "description": "City",
+          "maxLength": 100
+        },
+        "state": {
+          "type": "string",
+          "description": "State or province",
+          "maxLength": 100
+        },
+        "postal_code": {
+          "type": "string",
+          "description": "Postal or ZIP code",
+          "maxLength": 20
+        },
+        "country": {
+          "type": "string",
+          "description": "Country",
+          "maxLength": 100,
+          "default": "USA"
+        }
+      }
+    },
+    "business_hours": {
+      "type": "object",
+      "description": "Weekly operating hours",
+      "properties": {
+        "monday": {
+          "$ref": "#/definitions/dayHours"
+        },
+        "tuesday": {
+          "$ref": "#/definitions/dayHours"
+        },
+        "wednesday": {
+          "$ref": "#/definitions/dayHours"
+        },
+        "thursday": {
+          "$ref": "#/definitions/dayHours"
+        },
+        "friday": {
+          "$ref": "#/definitions/dayHours"
+        },
+        "saturday": {
+          "$ref": "#/definitions/dayHours"
+        },
+        "sunday": {
+          "$ref": "#/definitions/dayHours"
+        }
+      }
+    },
+    "social_media": {
+      "type": "object",
+      "description": "Social media profiles",
+      "properties": {
+        "facebook": {
+          "type": "string",
+          "format": "uri",
+          "description": "Facebook page URL"
+        },
+        "instagram": {
+          "type": "string",
+          "format": "uri",
+          "description": "Instagram profile URL"
+        },
+        "twitter": {
+          "type": "string",
+          "format": "uri",
+          "description": "Twitter/X profile URL"
+        },
+        "youtube": {
+          "type": "string",
+          "format": "uri",
+          "description": "YouTube channel URL"
+        },
+        "linkedin": {
+          "type": "string",
+          "format": "uri",
+          "description": "LinkedIn page URL"
+        },
+        "tiktok": {
+          "type": "string",
+          "format": "uri",
+          "description": "TikTok profile URL"
+        }
+      }
+    },
+    "business_info": {
+      "type": "object",
+      "description": "Legal and tax information",
+      "properties": {
+        "tax_id": {
+          "type": "string",
+          "description": "Tax identification number (EIN)",
+          "maxLength": 50
+        },
+        "license_number": {
+          "type": "string",
+          "description": "Business license number",
+          "maxLength": 50
+        },
+        "established_year": {
+          "type": "integer",
+          "description": "Year the gym was established",
+          "minimum": 1900,
+          "maximum": 2100
+        }
+      }
+    },
+    "facilities": {
+      "type": "array",
+      "description": "Available gym facilities and amenities",
+      "items": {
+        "type": "string"
+      },
+      "examples": [
+        ["Cardio Equipment", "Free Weights", "Group Classes", "Sauna", "Locker Rooms", "Personal Training"]
+      ]
+    },
+    "capacity": {
+      "type": "object",
+      "description": "Gym capacity information",
+      "properties": {
+        "max_members": {
+          "type": "integer",
+          "description": "Maximum member capacity",
+          "minimum": 1
+        },
+        "max_concurrent_users": {
+          "type": "integer",
+          "description": "Maximum concurrent gym users",
+          "minimum": 1
+        }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "description": "Operational settings",
+      "properties": {
+        "timezone": {
+          "type": "string",
+          "description": "Gym timezone",
+          "default": "UTC",
+          "examples": ["America/New_York", "America/Los_Angeles", "UTC"]
+        },
+        "currency": {
+          "type": "string",
+          "description": "Default currency code",
+          "pattern": "^[A-Z]{3}$",
+          "default": "USD",
+          "examples": ["USD", "EUR", "GBP"]
+        },
+        "language": {
+          "type": "string",
+          "description": "Default language code",
+          "pattern": "^[a-z]{2}(-[A-Z]{2})?$",
+          "default": "en",
+          "examples": ["en", "en-US", "es", "fr"]
+        },
+        "date_format": {
+          "type": "string",
+          "description": "Preferred date format",
+          "default": "MM/DD/YYYY",
+          "examples": ["MM/DD/YYYY", "DD/MM/YYYY", "YYYY-MM-DD"]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "dayHours": {
+      "type": "object",
+      "properties": {
+        "open": {
+          "type": "string",
+          "pattern": "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$",
+          "description": "Opening time (HH:MM format)",
+          "examples": ["06:00", "08:00"]
+        },
+        "close": {
+          "type": "string",
+          "pattern": "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$",
+          "description": "Closing time (HH:MM format)",
+          "examples": ["22:00", "20:00"]
+        },
+        "closed": {
+          "type": "boolean",
+          "description": "Whether the gym is closed this day",
+          "default": false
+        }
+      }
+    }
+  }
+}

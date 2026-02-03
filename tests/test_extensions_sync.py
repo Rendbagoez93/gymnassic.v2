@@ -1,6 +1,6 @@
 """Verify extensions.py synchronization with settings"""
 from app.extensions import *
-from app.settings import BaseConfig, DevelopmentConfig, ProductionConfig
+from app.settings import BaseConfig
 
 print("=" * 70)
 print("EXTENSIONS ↔ SETTINGS SYNCHRONIZATION VERIFICATION")
@@ -16,7 +16,7 @@ config_mapping = {
         'SQLALCHEMY_ENGINE_OPTIONS',
     ],
     'migrate': ['db (requires db extension)'],
-    
+
     # Authentication
     'login_manager': [
         'LOGIN_VIEW',
@@ -28,13 +28,13 @@ config_mapping = {
         'SESSION_COOKIE_SAMESITE',
         'PERMANENT_SESSION_LIFETIME',
     ],
-    
+
     # Security - CSRF
     'csrf': [
         'WTF_CSRF_ENABLED',
         'WTF_CSRF_TIME_LIMIT',
     ],
-    
+
     # Security - Rate Limiting
     'limiter': [
         'RATELIMIT_ENABLED',
@@ -42,13 +42,13 @@ config_mapping = {
         'RATELIMIT_DEFAULT',
         'RATELIMIT_LOGIN_ATTEMPTS',
     ],
-    
+
     # Security - HTTPS Headers
     'talisman': [
         'SESSION_COOKIE_SECURE',
         'PREFERRED_URL_SCHEME',
     ],
-    
+
     # Email
     'mail': [
         'MAIL_SERVER',
@@ -60,7 +60,7 @@ config_mapping = {
         'MAIL_DEFAULT_SENDER',
         'MAIL_SUPPRESS_SEND',
     ],
-    
+
     # Password Hashing
     'pwd_context': [
         'PASSWORD_MIN_LENGTH',
@@ -111,9 +111,9 @@ for category, ext_list in extensions.items():
 print("\n" + "=" * 70)
 print("INITIALIZATION FUNCTION")
 print("=" * 70)
-print(f"\n✓ init_extensions(app) - Available")
-print(f"  Purpose: Bind all extensions to Flask app instance")
-print(f"  Called from: app/__init__.py (application factory)")
+print("\n✓ init_extensions(app) - Available")
+print("  Purpose: Bind all extensions to Flask app instance")
+print("  Called from: app/__init__.py (application factory)")
 
 print("\n" + "=" * 70)
 print("✅ ALL EXTENSIONS SYNCHRONIZED WITH SETTINGS!")
@@ -121,7 +121,7 @@ print("=" * 70)
 print("\nSummary:")
 print(f"  • {len([item for sublist in extensions.values() for item in sublist])} extension instances created")
 print(f"  • {sum(len(v) for v in config_mapping.values())} configuration settings mapped")
-print(f"  • All extensions ready for app initialization")
-print(f"  • No config values in extensions.py ✓")
-print(f"  • No app creation in extensions.py ✓")
-print(f"  • No business logic in extensions.py ✓")
+print("  • All extensions ready for app initialization")
+print("  • No config values in extensions.py ✓")
+print("  • No app creation in extensions.py ✓")
+print("  • No business logic in extensions.py ✓")

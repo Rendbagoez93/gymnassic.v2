@@ -22,7 +22,10 @@ A modern Flask-based Gym Membership Management System that serves as a SignUp Ga
 - **Forms**: Flask-WTF
 - **Migrations**: Flask-Migrate
 - **Security**: Flask-Talisman, Rate Limiting
-- **Configuration**: python-dotenv
+- **Configuration**: Pydantic Settings 2.12+
+- **Dependency Injection**: dependency-injector 4.48+
+- **Code Quality**: Black, Ruff, MyPy
+- **Testing**: Pytest, Pytest-Cov
 
 ## Project Structure
 
@@ -30,10 +33,9 @@ A modern Flask-based Gym Membership Management System that serves as a SignUp Ga
 gymnassic.v2/
 ├── app/
 │   ├── settings/           # Configuration management (CENTRAL CONTROL)
-│   │   ├── base.py        # Main config classes
-│   │   ├── envcommon.py   # Environment loading
-│   │   ├── security.py    # Security settings
-│   │   └── databases.py   # Database settings
+│   │   ├── config.py      # Pydantic Settings classes
+│   │   ├── containers.py  # Dependency injection
+│   │   └── __init__.py    # Package exports
 │   ├── __init__.py        # Application factory
 │   └── extensions.py      # Flask extensions
 ├── auth/                  # Authentication module
@@ -45,8 +47,9 @@ gymnassic.v2/
 ├── templates/            # HTML templates
 ├── migrations/           # Database migrations
 ├── tests/                # Unit tests
+├── docs/                 # Documentation
 ├── run.py               # Application entry point
-└── pyproject.toml       # Dependencies
+└── pyproject.toml       # Dependencies & tool configs
 ```
 
 ## Quick Start

@@ -1,0 +1,88 @@
+{
+  "gym_name": "Gymnassic Fitness Center",
+  "business_name": "Gymnassic LLC",
+  "tagline": "Your Fitness Journey Starts Here",
+  "description": "A premier fitness facility offering state-of-the-art equipment, expert trainers, and a supportive community to help you achieve your health and wellness goals.",
+  "logo_url": "/static/images/logo.png",
+  "contact": {
+    "email": "info@gymnassic.com",
+    "phone": "+1-555-0100",
+    "phone_secondary": "+1-555-0101",
+    "website": "https://www.gymnassic.com"
+  },
+  "address": {
+    "street": "123 Fitness Boulevard",
+    "city": "New York",
+    "state": "NY",
+    "postal_code": "10001",
+    "country": "USA"
+  },
+  "business_hours": {
+    "monday": {
+      "open": "06:00",
+      "close": "22:00",
+      "closed": false
+    },
+    "tuesday": {
+      "open": "06:00",
+      "close": "22:00",
+      "closed": false
+    },
+    "wednesday": {
+      "open": "06:00",
+      "close": "22:00",
+      "closed": false
+    },
+    "thursday": {
+      "open": "06:00",
+      "close": "22:00",
+      "closed": false
+    },
+    "friday": {
+      "open": "06:00",
+      "close": "22:00",
+      "closed": false
+    },
+    "saturday": {
+      "open": "08:00",
+      "close": "20:00",
+      "closed": false
+    },
+    "sunday": {
+      "open": "08:00",
+      "close": "18:00",
+      "closed": false
+    }
+  },
+  "social_media": {
+    "facebook": "https://www.facebook.com/gymnassic",
+    "instagram": "https://www.instagram.com/gymnassic",
+    "twitter": "https://www.twitter.com/gymnassic"
+  },
+  "business_info": {
+    "license_number": "GYM-12345",
+    "established_year": 2020
+  },
+  "facilities": [
+    "Cardio Equipment",
+    "Free Weights",
+    "Resistance Machines",
+    "Group Fitness Classes",
+    "Personal Training",
+    "Locker Rooms",
+    "Showers",
+    "Sauna",
+    "Yoga Studio",
+    "Spinning Studio"
+  ],
+  "capacity": {
+    "max_members": 1000,
+    "max_concurrent_users": 150
+  },
+  "settings": {
+    "timezone": "America/New_York",
+    "currency": "USD",
+    "language": "en-US",
+    "date_format": "MM/DD/YYYY"
+  }
+}

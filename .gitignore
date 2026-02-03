@@ -1,89 +1,237 @@
-# Python-generated files
+# ========================================
+# Python
+# ========================================
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[oc]
+*.py[cod]
+*$py.class
 *.pyo
 *.pyd
+
+# C extensions
+*.so
+
+# Distribution / packaging
 build/
 dist/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
 wheels/
-*.egg-info
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
 *.egg
+MANIFEST
 
-# Virtual environments
+# ========================================
+# Virtual Environments
+# ========================================
 .venv/
 venv/
 ENV/
 env/
+.virtualenv/
 
-# Environment files (IMPORTANT: Never commit these!)
+# ========================================
+# Environment Files (CRITICAL - Never commit!)
+# ========================================
 .env
 .env.local
 .env.development
 .env.production
-!.env.example
+.env.testing
 
+# Gym profile configuration (contains sensitive business data)
+gym_profile.json
+
+# Keep example files
+!.env*.example
+!gym_profile.example.json
+
+# Keep example files
+!.env*.example
+
+# ========================================
 # Database
+# ========================================
 instance/
 *.db
 *.sqlite
 *.sqlite3
 *.db-journal
+*.db-wal
 
+# ========================================
 # Logs
+# ========================================
 logs/
 *.log
+*.log.*
 
+# ========================================
 # Uploads
+# ========================================
 uploads/
 !uploads/.gitkeep
 
-# IDE
+# ========================================
+# IDE and Editors
+# ========================================
+# VS Code
 .vscode/
+.vscode-test/
+
+# PyCharm / IntelliJ
 .idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
 *.swp
 *.swo
 *~
+.*.swp
+.*.swo
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Visual Studio
 .vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# OS
+# ========================================
+# Operating System
+# ========================================
+# macOS
 .DS_Store
-Thumbs.db
-desktop.ini
+.AppleDouble
+.LSOverride
+._*
 
-# Testing
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ========================================
+# Testing and Coverage
+# ========================================
 .pytest_cache/
 .coverage
+.coverage.*
 htmlcov/
 .tox/
+.nox/
 *.cover
+*.py,cover
 .hypothesis/
+.cache
+nosetests.xml
+coverage.xml
+*.coveragerc
 
-# Flask
+# ========================================
+# Flask Specific
+# ========================================
 instance/
 .webassets-cache
 .flask_session/
 
-# Migrations (keep structure, ignore version files if needed)
-# migrations/versions/*.py
+# ========================================
+# Python Package Management
+# ========================================
+# uv
+uv.lock
 
-# Temporary files
+# Poetry
+poetry.lock
+
+# Pipenv
+Pipfile.lock
+
+# PDM
+.pdm.toml
+__pypackages__/
+
+# ========================================
+# Linting and Formatting
+# ========================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.pytype/
+.pyre/
+.pyright/
+
+# ========================================
+# Build and Distribution
+# ========================================
+build/
+dist/
+*.spec
+
+# ========================================
+# Documentation
+# ========================================
+docs/_build/
+docs/.doctrees/
+docs/_static/
+docs/_templates/
+site/
+.sphinx/
+
+# ========================================
+# Temporary Files
+# ========================================
 *.tmp
 *.bak
 *.swp
+*.swo
 *~.nib
+.temp/
+temp/
+
+# ========================================
+# Security and Secrets
+# ========================================
+*.pem
+*.key
+*.crt
+*.cer
+secrets/
+.secrets/
+
+# ========================================
+# Miscellaneous
+# ========================================
+.python-version
 local_settings.py
-
-# Python package management
-uv.lock
-poetry.lock
-Pipfile.lock
-
-# Test files
-test_*.py
-*_test.py
-
-# Documentation builds
-docs/_build/
-docs/.doctrees/
-site/
+celerybeat-schedule
+celerybeat.pid
 

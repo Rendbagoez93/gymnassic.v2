@@ -25,11 +25,19 @@ def create_app(config_name=None):
     app = Flask(__name__)
     
     # Load configuration
-    config_class = get_config(config_name)
-    app.config.from_object(config_class)
+    config_instance = get_config(config_name)
+    
+    # Convert Pydantic settings to dict and load into Flask
+    config_dict = config_instance.model_dump()
+    for key, value in config_dict.items():
+        app.config[key.upper()] = value
+    
+    # Add computed properties
+    app.config['SQLALCHEMY_DATABASE_URI'] = config_instance.SQLALCHEMY_DATABASE_URI
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = config_instance.SQLALCHEMY_ENGINE_OPTIONS
     
     # Initialize configuration-specific setup
-    config_class.init_app(app)
+    config_instance.__class__.init_app(app)
     
     # Initialize extensions (to be implemented)
     # initialize_extensions(app)
