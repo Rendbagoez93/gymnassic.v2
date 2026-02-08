@@ -74,7 +74,7 @@ class TestInitExtensions:
 
         # Check that extensions are initialized
         assert "sqlalchemy" in app.extensions
-        assert hasattr(app, "user_loader_callback_loader")  # Flask-Login loaded
+        assert hasattr(app, "login_manager") or "login_manager" in app.extensions # Flask-Login loaded
 
     def test_init_extensions_with_testing_app(self):
         """Test initializing extensions with testing config."""

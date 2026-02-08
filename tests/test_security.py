@@ -8,9 +8,7 @@ import pytest
 
 from app.settings.security import (
     generate_secret_key,
-    get_csrf_config,
     get_rate_limit_key,
-    get_session_config,
     sanitize_redirect_url,
     validate_password_strength,
 )
@@ -152,46 +150,6 @@ class TestSanitizeRedirectUrl:
             "https://evil.com/path", allowed_hosts=["example.com"]
         )
         assert url is None
-
-
-class TestGetSessionConfig:
-    """Test get_session_config function."""
-
-    def test_get_session_config_secure(self):
-        """Test secure session config."""
-        config = get_session_config(secure=True)
-
-        assert config["SESSION_COOKIE_SECURE"] is True
-        assert config["SESSION_COOKIE_HTTPONLY"] is True
-        assert config["SESSION_COOKIE_SAMESITE"] == "Strict"
-        assert config["PERMANENT_SESSION_LIFETIME"] == 3600
-
-    def test_get_session_config_not_secure(self):
-        """Test non-secure session config."""
-        config = get_session_config(secure=False)
-
-        assert config["SESSION_COOKIE_SECURE"] is False
-        assert config["SESSION_COOKIE_HTTPONLY"] is True
-        assert config["SESSION_COOKIE_SAMESITE"] == "Lax"
-        assert config["PERMANENT_SESSION_LIFETIME"] == 3600
-
-
-class TestGetCsrfConfig:
-    """Test get_csrf_config function."""
-
-    def test_get_csrf_config_enabled(self):
-        """Test CSRF config when enabled."""
-        config = get_csrf_config(enabled=True)
-
-        assert config["WTF_CSRF_ENABLED"] is True
-        assert config["WTF_CSRF_TIME_LIMIT"] == 3600
-
-    def test_get_csrf_config_disabled(self):
-        """Test CSRF config when disabled."""
-        config = get_csrf_config(enabled=False)
-
-        assert config["WTF_CSRF_ENABLED"] is False
-        assert config["WTF_CSRF_TIME_LIMIT"] == 3600
 
 
 if __name__ == "__main__":

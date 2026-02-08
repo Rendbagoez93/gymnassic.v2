@@ -48,6 +48,7 @@ env/
 .env.development
 .env.production
 .env.testing
+.env.test
 
 # Gym profile configuration (contains sensitive business data)
 gym_profile.json
@@ -55,9 +56,6 @@ gym_profile.json
 # Keep example files
 !.env*.example
 !gym_profile.example.json
-
-# Keep example files
-!.env*.example
 
 # ========================================
 # Database
@@ -69,6 +67,13 @@ instance/
 *.db-journal
 *.db-wal
 
+# Redis
+dump.rdb
+redis.log
+
+# Database migrations backup
+migrations/versions/*.pyc
+
 # ========================================
 # Logs
 # ========================================
@@ -77,10 +82,12 @@ logs/
 *.log.*
 
 # ========================================
-# Uploads
+# Uploads and Static Files
 # ========================================
 uploads/
 !uploads/.gitkeep
+static/uploads/
+!static/uploads/.gitkeep
 
 # ========================================
 # IDE and Editors
@@ -161,6 +168,8 @@ coverage.xml
 instance/
 .webassets-cache
 .flask_session/
+flask_session/
+*.session
 
 # ========================================
 # Python Package Management
@@ -234,4 +243,12 @@ secrets/
 local_settings.py
 celerybeat-schedule
 celerybeat.pid
+
+# Cache directories
+.cache/
+cache/
+__pycache__/
+
+# Email test files
+sent_emails/
 

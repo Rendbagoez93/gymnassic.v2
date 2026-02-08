@@ -144,11 +144,7 @@ def init_extensions(app):
     
     # Rate Limiting (only if enabled in config)
     if app.config.get('RATELIMIT_ENABLED', False):
-        limiter.init_app(
-            app,
-            storage_uri=app.config.get('RATELIMIT_STORAGE_URL'),
-            default_limits=[app.config.get('RATELIMIT_DEFAULT')],
-        )
+        limiter.init_app(app)
     
     # HTTPS Security Headers (production only)
     if not app.config.get('DEBUG', False):
