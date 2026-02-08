@@ -14,6 +14,7 @@ from .config import (
     get_config,
 )
 from .containers import ApplicationContainer
+from .databases import DatabaseConfig, DatabaseEngine
 from .envcommon import BASE_DIR, get_current_environment, is_development, is_production
 from .gymconf import GymConfig
 
@@ -28,6 +29,9 @@ __all__ = [
     "config",
     # Dependency injection
     "ApplicationContainer",
+    # Database configuration
+    "DatabaseConfig",
+    "DatabaseEngine",
     # Environment utilities
     "BASE_DIR",
     "get_current_environment",

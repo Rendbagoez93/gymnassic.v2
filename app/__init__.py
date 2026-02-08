@@ -39,8 +39,9 @@ def create_app(config_name=None):
     # Initialize configuration-specific setup
     config_instance.__class__.init_app(app)
     
-    # Initialize extensions (to be implemented)
-    # initialize_extensions(app)
+    # Initialize extensions
+    from app.extensions import init_extensions
+    init_extensions(app)
     
     # Register blueprints (to be implemented)
     # register_blueprints(app)

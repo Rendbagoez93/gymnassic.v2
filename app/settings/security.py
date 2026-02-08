@@ -113,37 +113,3 @@ def sanitize_redirect_url(url: str, allowed_hosts: list[str] | None = None) -> s
             return url
 
     return None
-
-
-def get_session_config(secure: bool = True) -> dict[str, Any]:
-    """
-    Get recommended session configuration.
-
-    Args:
-        secure: Whether to require HTTPS
-
-    Returns:
-        dict: Session configuration
-    """
-    return {
-        "SESSION_COOKIE_SECURE": secure,
-        "SESSION_COOKIE_HTTPONLY": True,
-        "SESSION_COOKIE_SAMESITE": "Strict" if secure else "Lax",
-        "PERMANENT_SESSION_LIFETIME": 3600,  # 1 hour
-    }
-
-
-def get_csrf_config(enabled: bool = True) -> dict[str, Any]:
-    """
-    Get recommended CSRF configuration.
-
-    Args:
-        enabled: Whether CSRF protection is enabled
-
-    Returns:
-        dict: CSRF configuration
-    """
-    return {
-        "WTF_CSRF_ENABLED": enabled,
-        "WTF_CSRF_TIME_LIMIT": 3600,  # 1 hour
-    }

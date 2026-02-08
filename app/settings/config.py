@@ -18,17 +18,9 @@ from pathlib import Path
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from app.settings.databases import DatabaseConfig
+from app.settings.envcommon import BASE_DIR, Environment
 from app.settings.gymconf import GymConfig
-
-# Get the base directory (project root)
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
-
-# Define environment types
-class Environment:
-    DEVELOPMENT = "development"
-    PRODUCTION = "production"
-    TESTING = "testing"
 
 
 class BaseConfig(BaseSettings):
@@ -104,23 +96,15 @@ class BaseConfig(BaseSettings):
     @property
     def SQLALCHEMY_ENGINE_OPTIONS(self) -> dict:
         """Get SQLAlchemy engine options based on database type."""
-        if self.DATABASE_URL.startswith("sqlite"):
-            return {
-                "pool_pre_ping": self.DB_POOL_PRE_PING,
-                "connect_args": {"check_same_thread": False},
-            }
-        else:
-            return {
-                "pool_size": self.DB_POOL_SIZE,
-                "max_overflow": self.DB_MAX_OVERFLOW,
-                "pool_recycle": self.DB_POOL_RECYCLE,
-                "pool_pre_ping": self.DB_POOL_PRE_PING,
-                "pool_timeout": self.DB_POOL_TIMEOUT,
-                "connect_args": {
-                    "connect_timeout": self.DB_CONNECT_TIMEOUT,
-                    "application_name": self.DB_APP_NAME,
-                },
-            }
+        return DatabaseConfig.get_engine_options(
+            database_url=self.DATABASE_URL,
+            pool_size=self.DB_POOL_SIZE,
+            max_overflow=self.DB_MAX_OVERFLOW,
+            pool_recycle=self.DB_POOL_RECYCLE,
+            pool_timeout=self.DB_POOL_TIMEOUT,
+            connect_timeout=self.DB_CONNECT_TIMEOUT,
+            app_name=self.DB_APP_NAME,
+        )
 
     # ========================================
     # Security Configuration
@@ -388,14 +372,6 @@ config = {
 
 
 def get_config(env_name: str | None = None):
-    """
-    Get configuration class based on environment name.
-    Args:
-        env_name: Environment name (development, production, testing).
-                 If None, uses FLASK_ENV environment variable.
-    Returns:
-        Configuration class instance.
-    """
     if env_name is None:
         env_name = os.getenv("FLASK_ENV", Environment.DEVELOPMENT)
 
